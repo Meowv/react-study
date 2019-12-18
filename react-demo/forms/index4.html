@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>forms</title>
+</head>
+
+<body>
+    <div id="root"></div>
+</body>
+<script src="https://unpkg.com/react@16/umd/react.development.js" crossorigin></script>
+<script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js" crossorigin></script>
+<script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+<script type="text/babel">
+    class Reservation extends React.Component {
+        constructor(props) {
+            super(props);
+            this.state = {
+                isGoding: true,
+                numberOfGuests: 2
+            };
+
+            this.handleInputChange = this.handleInputChange.bind(this);
+        }
+
+        handleInputChange(event) {
+            const target = event.target;
+            const value = target.type === 'checkbox' ? target.checked : target.value;
+            const name = target.name;
+
+            this.setState({
+                [name]: value
+            });
+            // var partialState = {};
+            // partialState[name] = value;
+            // this.setState(partialState);
+        }
+
+        render() {
+            return (
+                <form>
+                    <label>
+                        参与:
+                        <input
+                            name="isGoing"
+                            type="checkbox"
+                            checked={this.state.isGoing}
+                            onChange={this.handleInputChange} />
+                    </label>
+                    <br />
+                    <label>
+                        来宾人数:
+                        <input
+                            name="numberOfGuests"
+                            type="number"
+                            value={this.state.numberOfGuests}
+                            onChange={this.handleInputChange} />
+                    </label>
+                </form>
+            );
+        }
+    }
+
+    ReactDOM.render(
+        <Reservation />,
+        document.getElementById('root')
+    );
+
+    // 在受控组件上指定 value 的 prop 可以防止用户更改输入。如果指定了 value，但输入仍可编辑，则可能是意外地将value 设置为 undefined 或 null
+    // ReactDOM.render(<input value="hi" />, mountNode);
+    // setTimeout(function () {
+    //     ReactDOM.render(<input value={null} />, mountNode);
+    // }, 1000);
+</script>
+
+</html>

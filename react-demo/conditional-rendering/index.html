@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>conditional-rendering</title>
+</head>
+
+<body>
+    <div id="root"></div>
+    <script src="https://unpkg.com/react@16/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js" crossorigin></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script type="text/babel">
+        function UserGreeting(props) {
+            return <h1>Welcome back!</h1>;
+        }
+
+        function GuestGreeting(props) {
+            return <h1>Please sign up.</h1>;
+        }
+
+        function Greeting(props) {
+            const isLoggedIn = props.isLoggedIn;
+            if (isLoggedIn) {
+                return <UserGreeting />;
+            }
+            return <GuestGreeting />;
+        }
+
+        ReactDOM.render(
+            <Greeting isLoggedIn={true} />,
+            document.getElementById('root')
+        );
+    </script>
+</body>
+
+</html>

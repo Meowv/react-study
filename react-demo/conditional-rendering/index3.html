@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>conditional-rendering</title>
+</head>
+
+<body>
+    <div id="root"></div>
+    <script src="https://unpkg.com/react@16/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js" crossorigin></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script type="text/babel">
+        function Mailbox(props) {
+            const unreadMessages = props.unreadMessages;
+            return (
+                <div>
+                    <h1>Hello!</h1>
+                    {unreadMessages.length > 0 &&
+                        <h2>You have {unreadMessages.length} unread messages.</h2>
+                    }
+                </div>
+            );
+        }
+
+        const messages = ['React', 'Re: React', 'Re:Re: React'];
+
+        ReactDOM.render(
+            <Mailbox unreadMessages={messages} />,
+            document.getElementById('root')
+        );
+
+        // render() {
+        //     const isLoggedIn = this.state.isLoggedIn;
+        //     return (
+        //         <div>
+        //             The user is <b>{isLoggedIn ? 'currently' : 'not'}</b> logged in.
+        //         </div>
+        //     );
+        // }
+
+        // render() {
+        //     const isLoggedIn = this.state.isLoggedIn;
+        //     return (
+        //         <div>
+        //             {isLoggedIn ? (
+        //                 <LogoutButton onClick={this.handleLogoutClick} />
+        //             ) : (
+        //                     <LoginButton onClick={this.handleLoginClick} />
+        //                 )}
+        //         </div>
+        //     );
+        // }
+    </script>
+</body>
+
+</html>

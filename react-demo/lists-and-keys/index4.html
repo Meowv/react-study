@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>lists-and-keys</title>
+</head>
+
+<body>
+    <div id="root"></div>
+</body>
+<script src="https://unpkg.com/react@16/umd/react.development.js" crossorigin></script>
+<script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js" crossorigin></script>
+<script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+<script type="text/babel">
+    function Blog(props) {
+        const sidebar = (
+            <ul>
+                {props.posts.map(post =>
+                    <li key={post.id}>
+                        {post.title}
+                    </li>
+                )}
+            </ul>
+        );
+        const content = props.posts.map(post =>
+            <div key={post.id}>
+                <h3>{post.title}</h3>
+                <p>{post.content}</p>
+            </div>
+        );
+        return (
+            <div>
+                {sidebar}
+                <hr />
+                {content}
+            </div>
+        );
+    }
+
+    const posts = [
+        { id: 1, title: 'Hello World', content: 'Welcome to learning React!' },
+        { id: 2, title: 'Installation', content: 'You can install React from npm.' }
+    ];
+    ReactDOM.render(
+        <Blog posts={posts} />,
+        document.getElementById('root')
+    );
+</script>
+
+</html>

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Hello World</title>
+</head>
+
+<body>
+    <div id="root"></div>
+</body>
+<script src="https://unpkg.com/react@16/umd/react.development.js" crossorigin></script>
+<script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js" crossorigin></script>
+<script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+<script type="text/babel">
+    function formatName(user) {
+        return user.firstName + ' ' + user.lastName;
+    }
+
+    function getHreeting(user) {
+        if (user) {
+            return <h1>Hello, {formatName(user)}!</h1>;
+        }
+        return <h1>Hello, Stranger.</h1>;
+    }
+
+    const user = {
+        firstName: '阿星',
+        lastName: 'Plus'
+    };
+
+    const element = (
+        <h1>Hello, {formatName(user)}</h1>
+    );
+
+    ReactDOM.render(
+        element,
+        document.getElementById('root')
+    );
+
+    // 可以通过使用引号，来将属性值指定为字符串字面量
+    const element1 = <div tabIndex="0"></div>;
+
+    // 可以使用大括号，来在属性值中插入一个 JavaScript 表达式
+    const element2 = <img src={user.avatarUrl}></img>;
+
+    // 假如一个标签里面没有内容，你可以使用 /> 来闭合标签，就像 XML 语法一样
+    const element3 = <img src={user.avatarUrl} />;
+
+    // JSX 标签里能够包含很多子元素
+    const element4 = (
+        <div>
+            <h1>Hello!</h1>
+            <h2>Good to see you here.</h2>
+        </div>
+    );
+
+    // 可以安全地在 JSX 当中插入用户输入内容
+    const title = response.potentiallyMaliciousInput;
+    const element5 = <h1>{title}</h1>
+
+    // 以下两种写法完全等效
+    // Babel 会把 JSX 转译成一个名为 React.createElement() 函数调用
+    const element6 = (
+        <h1 className="greeting">
+            Hello, world!
+        </h1>
+    );
+    const element7 = React.createElement(
+        'h1',
+        { className: 'greeting' },
+        'Hello, world!'
+    );
+
+    // React.createElement() 会预先执行一些检查，以帮助你编写无错代码，但实际上它创建了一个这样的对象
+    const element8 = {
+        type: 'h1',
+        props: {
+            className: 'greeting',
+            children: 'Hello, world!'
+        }
+    };
+
+</script>
+
+</html>

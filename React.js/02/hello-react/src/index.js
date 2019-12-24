@@ -2,34 +2,51 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 
-// class Header extends React.Component {
-//     render() {
-//         return (
-//             <div>
-//                 <h1>阿星Plus</h1>
-//             </div>
-//         )
-//     }
-// }
-
-// ReactDOM.render(<Header />, document.getElementById('root'));
-
-// 使用 JSX 描述 UI 信息，上面代码编译后的代码，JSX其实就是 React.createElemen 的一个语法糖
-class Header extends React.Component {
+class Title extends React.Component {
     render() {
         return (
-            React.createElement(
-                "div",
-                null,
-                React.createElement(
-                    "h1", { className: 'title' }, "阿星Plus"
-                )
-            )
+            <h1>Title</h1>
         )
     }
 }
 
-ReactDOM.render(
-    React.createElement(Header, null),
-    document.getElementById('root')
-);
+class Header extends React.Component {
+    render() {
+        return (
+            <div>
+                <Title />
+                <h2>This is Header</h2>
+            </div>
+        )
+    }
+}
+
+class Main extends React.Component {
+    render() {
+        return (
+            <h2>This is main content</h2>
+        )
+    }
+}
+
+class Footer extends React.Component {
+    render() {
+        return (
+            <h2>This is footer</h2>
+        )
+    }
+}
+
+class Index extends React.Component {
+    render() {
+        return (
+            <div>
+                <Header />
+                <Main />
+                <Footer />
+            </div>
+        )
+    }
+}
+
+ReactDOM.render(<Index />, document.getElementById('root'));

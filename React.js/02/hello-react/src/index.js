@@ -3,9 +3,19 @@ import ReactDOM from 'react-dom';
 import './index.css';
 
 class Title extends React.Component {
+    // handleClickOnTitle(e) {
+    //     console.log(this)
+    //     console.log('Click on title.')
+    //     console.log(e.target.innerHTML)
+    // }
+    handleClickOnTitle(word, e) {
+        console.log(this, word)
+    }
     render() {
         return (
-            <h1>Title</h1>
+            // <h1 onClick={this.handleClickOnTitle}>阿星Plus</h1>
+            // <h1 onClick={this.handleClickOnTitle.bind(this)}>阿星Plus</h1>
+            <h1 onClick={this.handleClickOnTitle.bind(this, 'Hello')}>阿星Plus</h1>
         )
     }
 }

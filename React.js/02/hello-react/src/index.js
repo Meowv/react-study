@@ -2,23 +2,32 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 
-class Card extends React.Component {
+class Editor extends React.Component {
+    constructor() {
+        super();
+        this.state = {
+            content: '<h1>阿星Plus</h1>',
+            color: 'green'
+        }
+    }
+
+    handleChangeColor() {
+        this.setState({
+            color: 'blue'
+        })
+    }
+
     render() {
-        console.log(this.props.children)
         return (
-            <div className='card'>
-                <div className='card-content'>
-                    {this.props.children}
-                </div>
+            <div>
+                <h1 style={{ fontSize: '12px', color: 'red' }}></h1>
+                <h1 style={{ fontSize: '12px', color: this.state.color }}>哈哈哈</h1>
+                <button onClick={this.handleChangeColor.bind(this)}>变色</button>
+                <div className='editor-wrapper'>{this.state.content}</div>
+                <div className='editor-wrapper' dangerouslySetInnerHTML={{ __html: this.state.content }} />
             </div>
         )
     }
 }
 
-ReactDOM.render(<Card children={
-    <div>
-        <h2>阿星Plus</h2>
-        <div>https://meowv.com</div>
-        订阅：<input />
-    </div>
-} />, document.getElementById('root'));
+ReactDOM.render(<Editor />, document.getElementById('root'));

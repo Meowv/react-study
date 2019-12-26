@@ -42,6 +42,16 @@ class Comment extends Component {
         })
     }
 
+    _getProcessedContent(content) {
+        return content
+            .replace(/&/g, "&amp;")
+            .replace(/</g, "&lt;")
+            .replace(/>/g, "&gt;")
+            .replace(/"/g, "&quot;")
+            .replace(/'/g, "&#039;")
+            .replace(/`([\S\s]+?)`/g, '<code>$1</code>')
+    }
+
     render() {
         const { comment } = this.props
         return (
@@ -51,7 +61,9 @@ class Comment extends Component {
                         {comment.username}
                     </span>：
                 </div>
-                <p>{comment.content}</p>
+                <p dangerouslySetInnerHTML={{
+                    __html: this._getProcessedContent(comment.content)
+                }} />
                 <span className='comment-createdtime'>
                     {this.state.timeString}
                 </span>

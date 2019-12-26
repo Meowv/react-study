@@ -2,66 +2,32 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 
-class Title extends React.Component {
-    // handleClickOnTitle(e) {
-    //     console.log(this)
-    //     console.log('Click on title.')
-    //     console.log(e.target.innerHTML)
-    // }
-    handleClickOnTitle(word, e) {
-        console.log(this, word)
-    }
-    render() {
-        return (
-            // <h1 onClick={this.handleClickOnTitle}>阿星Plus</h1>
-            // <h1 onClick={this.handleClickOnTitle.bind(this)}>阿星Plus</h1>
-            <h1 onClick={this.handleClickOnTitle.bind(this, 'Hello')}>阿星Plus</h1>
-        )
-    }
-}
-
-class Header extends React.Component {
+class Clock extends React.Component {
     constructor() {
         super()
-        console.log('constructor')
+        this.state = {
+            date: new Date()
+        }
     }
 
     componentWillMount() {
-        console.log('component will mount')
-    }
-
-    componentDidMount() {
-        console.log('component did mount')
+        this.timer = setInterval(() => {
+            this.setState({ date: new Date() })
+        }, 1000)
     }
 
     componentWillUnmount() {
-        console.log('component will unmount')
+        clearInterval(this.timer)
     }
 
     render() {
-        console.log('render')
-
         return (
             <div>
-                <Title />
-                <h2>This is Header</h2>
+                <h1>
+                    <p>现在的时间是</p>
+                    {this.state.date.toLocaleTimeString()}
+                </h1>
             </div>
-        )
-    }
-}
-
-class Main extends React.Component {
-    render() {
-        return (
-            <h2>This is main content</h2>
-        )
-    }
-}
-
-class Footer extends React.Component {
-    render() {
-        return (
-            <h2>This is footer</h2>
         )
     }
 }
@@ -76,17 +42,15 @@ class Index extends React.Component {
 
     handleShowOrHide() {
         this.setState({
-            isShowHeader: !this.state.isShowHeader
+            isShowClock: !this.state.isShowClock
         })
     }
 
     render() {
         return (
             <div>
-                {this.state.isShowHeader ? <Header /> : null}
-                <button onClick={this.handleShowOrHide.bind(this)}>显示或者隐藏标题</button>
-                <Main />
-                <Footer />
+                {this.state.isShowClock ? <Clock /> : null}
+                <button onClick={this.handleShowOrHide.bind(this)}> 显示或隐藏时钟</button>
             </div>
         )
     }

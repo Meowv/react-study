@@ -2,16 +2,23 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 
-class AutoFocusInput extends React.Component {
-    componentDidMount() {
-        this.input.focus()
-    }
-
+class Card extends React.Component {
     render() {
+        console.log(this.props.children)
         return (
-            <input ref={(input) => this.input = input} />
+            <div className='card'>
+                <div className='card-content'>
+                    {this.props.children}
+                </div>
+            </div>
         )
     }
 }
 
-ReactDOM.render(<AutoFocusInput />, document.getElementById('root'));
+ReactDOM.render(<Card children={
+    <div>
+        <h2>阿星Plus</h2>
+        <div>https://meowv.com</div>
+        订阅：<input />
+    </div>
+} />, document.getElementById('root'));

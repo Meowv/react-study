@@ -33,7 +33,6 @@ class Comment extends Component {
 
     _updateTimeString() {
         const comment = this.props.comment
-        console.log(comment)
         const duration = (+Date.now() - comment.createdTime) / 1000
         this.setState({
             timeString: duration > 60

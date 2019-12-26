@@ -10,12 +10,24 @@ class CommentInput extends Component {
         super()
         this.state = {
             username: '',
-            content: ''
+            content: '',
+            createdTime: +new Date()
         }
+    }
+
+    componentWillMount() {
+        this._loadUsername()
     }
 
     componentDidMount() {
         this.textarea.focus()
+    }
+
+    _loadUsername() {
+        const username = localStorage.getItem('username')
+        if (username) {
+            this.setState({ username })
+        }
     }
 
     _saveUsername(username) {

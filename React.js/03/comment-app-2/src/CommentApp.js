@@ -33,15 +33,25 @@ class CommentApp extends Component {
 
         const comments = this.state.comments
         comments.push(comment)
-        
+
         this.setState({ comments })
         this._saveComments(comments)
     }
+
+    handleDeleteComment(index) {
+        const comments = this.state.comments
+        comments.splice(index, 1)
+        this.setState({ comments })
+        this._saveComments(comments)
+    }
+
     render() {
         return (
             <div className='wrapper'>
                 <CommentInput onSubmit={this.handleSubmitComment.bind(this)} />
-                <CommentList comments={this.state.comments} />
+                <CommentList
+                    comments={this.state.comments}
+                    onDeleteComment={this.handleDeleteComment.bind(this)} />
             </div>
         )
     }

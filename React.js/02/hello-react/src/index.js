@@ -1,33 +1,33 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import PropTypes from 'prop-types'
 import './index.css';
 
-class Editor extends React.Component {
-    constructor() {
-        super();
-        this.state = {
-            content: '<h1>阿星Plus</h1>',
-            color: 'green'
-        }
+class Comment extends React.Component {
+    static propTypes = {
+        comment: PropTypes.object
+        // comment: PropTypes.object.isRequired
+        //          PropTypes.array
+        //          PropTypes.bool
+        //          PropTypes.func
+        //          PropTypes.number
+        //          PropTypes.string
+        //          PropTypes.node
+        //          PropTypes.element
     }
-
-    handleChangeColor() {
-        this.setState({
-            color: 'blue'
-        })
-    }
-
     render() {
+        const { comment } = this.props
         return (
-            <div>
-                <h1 style={{ fontSize: '12px', color: 'red' }}></h1>
-                <h1 style={{ fontSize: '12px', color: this.state.color }}>哈哈哈</h1>
-                <button onClick={this.handleChangeColor.bind(this)}>变色</button>
-                <div className='editor-wrapper'>{this.state.content}</div>
-                <div className='editor-wrapper' dangerouslySetInnerHTML={{ __html: this.state.content }} />
+            <div className='comment'>
+                <div className='comment-user'>
+                    <span>{comment.username} </span>：
+                </div>
+                <p>{comment.content}</p>
             </div>
         )
     }
 }
 
-ReactDOM.render(<Editor />, document.getElementById('root'));
+const comments = { 'username': 'qix', 'content': 'aaaaa' };
+
+ReactDOM.render(<Comment comment={comments} />, document.getElementById('root'));

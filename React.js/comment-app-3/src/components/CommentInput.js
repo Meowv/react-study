@@ -1,49 +1,46 @@
-import React, { Component } from 'react'
 import PropTypes from 'prop-types'
+import React, { Component } from 'react'
 
-class CommentInput extends Component {
+export default class CommentInput extends Component {
     static propTypes = {
-        obSubmit: PropTypes.func
+        username: PropTypes.any,
+        onSubmit: PropTypes.func,
+        onUserNameInputBlur: PropTypes.func
     }
 
-    constructor() {
-        super()
+    static defaultProps = {
+        username: ''
+    }
+
+    constructor(props) {
+        super(props)
         this.state = {
-            username: '',
-            content: '',
-            createdTime: +new Date()
+            // 从 props上取 username 字段
+            username: props.username,
+            content: ''
         }
-    }
-
-    componentWillMount() {
-        this._loadUsername()
     }
 
     componentDidMount() {
         this.textarea.focus()
     }
 
-    _loadUsername() {
-        const username = localStorage.getItem('username')
-        if (username) {
-            this.setState({ username })
+    handleUsernameBlur(event) {
+        if (this.props.onUserNameInputBlur) {
+            this.props.onUserNameInputBlur(event.target.value)
         }
     }
 
-    _saveUsername(username) {
-        localStorage.setItem('username', username)
-    }
-
-    handleUsernameBlur(event) {
-        this._saveUsername(event.target.value)
-    }
-
     handleUsernameChange(event) {
-        this.setState({ username: event.target.value })
+        this.setState({
+            username: event.target.value
+        })
     }
 
     handleContentChange(event) {
-        this.setState({ content: event.target.value })
+        this.setState({
+            content: event.target.value
+        })
     }
 
     handleSubmit() {
@@ -85,5 +82,3 @@ class CommentInput extends Component {
         )
     }
 }
-
-export default CommentInput

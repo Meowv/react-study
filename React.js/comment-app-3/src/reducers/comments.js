@@ -20,7 +20,7 @@ export default function (state, action) {
             // 刪除评论
             return {
                 comments: [
-                    ...state.comments.slice(0, action.commentIndex).ADD_COMMENT,
+                    ...state.comments.slice(0, action.commentIndex),
                     ...state.comments.slice(action.commentIndex + 1)
                 ]
             }

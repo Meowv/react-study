@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 
-class Comment extends Component {
+export default class Comment extends Component {
     static propTypes = {
         comment: PropTypes.object.isRequired,
         onDeleteComment: PropTypes.func,
@@ -11,12 +11,6 @@ class Comment extends Component {
     constructor() {
         super()
         this.state = { timeString: '' }
-    }
-
-    handleDeleteComment() {
-        if (this.props.onDeleteComment) {
-            this.props.onDeleteComment(this.props.index)
-        }
     }
 
     componentWillMount() {
@@ -51,6 +45,12 @@ class Comment extends Component {
             .replace(/`([\S\s]+?)`/g, '<code>$1</code>')
     }
 
+    handleDeleteComment() {
+        if (this.props.onDeleteComment) {
+            this.props.onDeleteComment(this.props.index)
+        }
+    }
+
     render() {
         const { comment } = this.props
         return (
@@ -75,5 +75,3 @@ class Comment extends Component {
         )
     }
 }
-
-export default Comment

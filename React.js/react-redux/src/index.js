@@ -1,10 +1,9 @@
 import React, { Component } from 'react'
-import PropTypes from 'prop-types'
 import ReactDOM from 'react-dom'
-import Header from './Header'
-import Content from './Content'
-import { Provider } from './react-redux'
-import './index.css';
+import { Provider } from 'react-redux'
+import Content from './containers/Content'
+import Header from './containers/Header'
+import './index.css'
 
 function createStore(reducer) {
     let state = null

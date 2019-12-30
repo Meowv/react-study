@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types'
 
 class XiaojiejieItem extends Component {
     constructor(props) {
@@ -8,7 +9,9 @@ class XiaojiejieItem extends Component {
 
     render() {
         return (
-            <div onClick={this.handleClick}>{this.props.content}</div>
+            <div onClick={this.handleClick}>
+                {this.props.avname} 为你做- {this.props.content}
+            </div>
         );
     }
 
@@ -20,6 +23,17 @@ class XiaojiejieItem extends Component {
         console.log(this.props.index)
         this.props.deleteItem(this.props.index);
     }
+}
+
+XiaojiejieItem.propTypes = {
+    content: PropTypes.string,
+    deleteItem: PropTypes.func,
+    index: PropTypes.number,
+    avname: PropTypes.string.isRequired
+}
+
+XiaojiejieItem.defaultProps = {
+    avname: '松岛枫'
 }
 
 export default XiaojiejieItem;

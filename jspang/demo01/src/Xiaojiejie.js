@@ -47,19 +47,13 @@ class Xiaojiejie extends Component {
                     {
                         this.state.list.map((item, index) => {
                             return (
-                                // <li
-                                //     key={index + item}
-                                //     onClick={this.deleteItem.bind(this, index)}
-                                //     dangerouslySetInnerHTML={{ __html: item }}>
-                                // </li>
-                                <div>
-                                    <XiaojiejieItem
-                                        key={index + item}
-                                        content={item}
-                                        index={index}
-                                        list={this.state.list}
-                                        deleteItem={this.deleteItem.bind(this)} />
-                                </div>
+                                <XiaojiejieItem
+                                    key={index + item}
+                                    content={item}
+                                    index={index}
+                                    // avname='波多野结衣'
+                                    list={this.state.list}
+                                    deleteItem={this.deleteItem.bind(this)} />
                             )
                         })
                     }

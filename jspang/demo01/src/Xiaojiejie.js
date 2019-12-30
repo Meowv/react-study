@@ -1,13 +1,14 @@
 import React, { Component, Fragment } from 'react'
 import XiaojiejieItem from './XiaojiejieItem'
 import axios from 'axios'
+import Boss from './Boss'
 
 class Xiaojiejie extends Component {
     constructor(props) {
         super(props)
         this.state = {
             inputValue: '大保健',
-            list: ['基础按摩', '精油推背']
+            list: []
         }
     }
 
@@ -16,10 +17,14 @@ class Xiaojiejie extends Component {
     }
 
     componentDidMount() {
-        console.log('componentDidMount----组件挂载完成的时刻执行')
-
         axios.post('https://web-api.juejin.im/v3/web/wbbr/bgeda')
-            .then((res) => { console.log('axios 获取数据成功:' + JSON.stringify(res)) })
+            .then((res) => {
+                console.log('axios 获取数据成功:' + JSON.stringify(res))
+
+                this.setState({
+                    list: ['基础按摩', '精油推背']
+                })
+            })
             .catch((error) => { console.log('axios 获取数据失败' + error) })
     }
 
@@ -94,6 +99,8 @@ class Xiaojiejie extends Component {
                         })
                     }
                 </ul>
+
+                <Boss />
             </Fragment>
         )
     }

@@ -1,5 +1,6 @@
 import React, { Component, Fragment } from 'react'
 import XiaojiejieItem from './XiaojiejieItem'
+import axios from 'axios'
 
 class Xiaojiejie extends Component {
     constructor(props) {
@@ -16,6 +17,10 @@ class Xiaojiejie extends Component {
 
     componentDidMount() {
         console.log('componentDidMount----组件挂载完成的时刻执行')
+
+        axios.post('https://web-api.juejin.im/v3/web/wbbr/bgeda')
+            .then((res) => { console.log('axios 获取数据成功:' + JSON.stringify(res)) })
+            .catch((error) => { console.log('axios 获取数据失败' + error) })
     }
 
     shouldComponentUpdate() {

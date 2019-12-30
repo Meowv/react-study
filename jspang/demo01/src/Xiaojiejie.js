@@ -34,7 +34,10 @@ class Xiaojiejie extends Component {
         return (
             <Fragment>
                 <div>
+                    <label htmlFor="qix">加入服务：</label>
                     <input
+                        id="qix"
+                        className='input'
                         value={this.state.inputValue}
                         onChange={this.inputChange.bind(this)} />
                     <button onClick={this.addList.bind(this)}>增加服务</button>
@@ -45,8 +48,8 @@ class Xiaojiejie extends Component {
                             return (
                                 <li
                                     key={index + item}
-                                    onClick={this.deleteItem.bind(this, index)}>
-                                    {item}
+                                    onClick={this.deleteItem.bind(this, index)}
+                                    dangerouslySetInnerHTML={{ __html: item }}>
                                 </li>
                             )
                         })

@@ -7,6 +7,16 @@ class XiaojiejieItem extends Component {
         this.handleClick = this.handleClick.bind(this);
     }
 
+    // 组件第一次存在 dom 中，函数是不会执行的
+    // 如果已经存在于 dom 中，函数才会被执行
+    componentWillReceiveProps() {
+        console.log('child - componentWillReceiveProps')
+    }
+
+    componentWillUnmount() {
+        console.log('child - componentWillUnmount')
+    }
+
     render() {
         return (
             <div onClick={this.handleClick}>
@@ -20,7 +30,6 @@ class XiaojiejieItem extends Component {
         // TypeError: Cannot assign to read only property 'list' of object '#<Object>'
         // 此处报错，list是只读的，单项数据流
 
-        console.log(this.props.index)
         this.props.deleteItem(this.props.index);
     }
 }

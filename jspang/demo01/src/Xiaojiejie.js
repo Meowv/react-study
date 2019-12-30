@@ -10,6 +10,32 @@ class Xiaojiejie extends Component {
         }
     }
 
+    componentWillMount() {
+        console.log('componentWillMount----组件将要挂载到页面的时刻')
+    }
+
+    componentDidMount() {
+        console.log('componentDidMount----组件挂载完成的时刻执行')
+    }
+
+    shouldComponentUpdate() {
+        console.log('shouldComponentUpdate---组件发生改变前执行')
+        // 它要求返回一个布尔类型的结果，必须有返回值
+        return true
+    }
+
+    componentWillUpdate() {
+        console.log('componentWillUpdate---组件更新前，shouldComponentUpdate函数之后执行')
+    }
+
+    componentDidUpdate() {
+        console.log('componentDidUpdate----组件更新之后执行')
+    }
+
+    componentWillReceiveProps() {
+        console.log('componentWillReceiveProps')
+    }
+
     inputChange() {
         this.setState({
             // inputValue: e.target.value
@@ -34,6 +60,8 @@ class Xiaojiejie extends Component {
     }
 
     render() {
+        console.log('render---组件挂载中.......')
+
         return (
             <Fragment>
                 <div>

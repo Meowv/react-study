@@ -1,5 +1,5 @@
 import axios from 'axios'
-import { ADD_ITEM, CHANGE_INPUT, DELETE_ITEM, GET_LIST } from './actionTypes'
+import { ADD_ITEM, CHANGE_INPUT, DELETE_ITEM, GET_LIST, GET_LIST_WITH_SAGA } from './actionTypes'
 
 export const changeInputAction = (value) => ({
     type: CHANGE_INPUT,
@@ -27,17 +27,9 @@ export const GetTodoList = () => {
             const action = GetListAction(data)
             dispatch(action)
         })
-
-        const data = {
-            'data': {
-                "list": [
-                    '早8点开晨会，分配今天的开发工作',
-                    '早9点和项目经理作开发需求讨论会',
-                    '晚5:30对今日代码进行review'
-                ]
-            }
-        }
-        const action = GetListAction(data)
-        dispatch(action)
     }
 }
+
+export const GetTodoListWithSage = () => ({
+    type: GET_LIST_WITH_SAGA
+})

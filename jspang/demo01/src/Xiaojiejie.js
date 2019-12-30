@@ -57,6 +57,7 @@ class Xiaojiejie extends Component {
                                         key={index + item}
                                         content={item}
                                         index={index}
+                                        list={this.state.list}
                                         deleteItem={this.deleteItem.bind(this)} />
                                 </div>
                             )

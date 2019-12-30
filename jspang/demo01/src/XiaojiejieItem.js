@@ -13,6 +13,10 @@ class XiaojiejieItem extends Component {
     }
 
     handleClick() {
+        // this.props.list = []
+        // TypeError: Cannot assign to read only property 'list' of object '#<Object>'
+        // 此处报错，list是只读的，单项数据流
+
         console.log(this.props.index)
         this.props.deleteItem(this.props.index);
     }

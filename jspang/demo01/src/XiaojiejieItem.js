@@ -17,6 +17,14 @@ class XiaojiejieItem extends Component {
         console.log('child - componentWillUnmount')
     }
 
+    shouldComponentUpdate(nextProps, nextState) {
+        if (nextProps.content !== this.props.content) {
+            return true
+        } else {
+            return false
+        }
+    }
+
     render() {
         return (
             <div onClick={this.handleClick}>

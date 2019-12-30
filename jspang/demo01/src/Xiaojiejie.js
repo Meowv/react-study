@@ -2,6 +2,8 @@ import React, { Component, Fragment } from 'react'
 import XiaojiejieItem from './XiaojiejieItem'
 import axios from 'axios'
 import Boss from './Boss'
+import { CSSTransition, TransitionGroup } from 'react-transition-group'
+
 
 class Xiaojiejie extends Component {
     constructor(props) {
@@ -85,19 +87,29 @@ class Xiaojiejie extends Component {
                     <button onClick={this.addList.bind(this)}>增加服务</button>
                 </div>
                 <ul ref={(ul) => { this.ul = ul }}>
-                    {
-                        this.state.list.map((item, index) => {
-                            return (
-                                <XiaojiejieItem
-                                    key={index + item}
-                                    content={item}
-                                    index={index}
-                                    // avname='波多野结衣'
-                                    list={this.state.list}
-                                    deleteItem={this.deleteItem.bind(this)} />
-                            )
-                        })
-                    }
+                    <TransitionGroup>
+                        {
+                            this.state.list.map((item, index) => {
+                                return (
+                                    <CSSTransition
+                                        timeout={2000}
+                                        classNames='boss-text'
+                                        unmountOnExit
+                                        appear={true}
+                                        key={index + item}
+                                    >
+                                        <XiaojiejieItem
+                                            key={index + item}
+                                            content={item}
+                                            index={index}
+                                            // avname='波多野结衣'
+                                            list={this.state.list}
+                                            deleteItem={this.deleteItem.bind(this)} />
+                                    </CSSTransition>
+                                )
+                            })
+                        }
+                    </TransitionGroup>
                 </ul>
 
                 <Boss />

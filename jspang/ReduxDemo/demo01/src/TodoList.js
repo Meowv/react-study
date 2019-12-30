@@ -35,8 +35,8 @@ class TodoList extends Component {
     }
 
     componentDidMount() {
-        const action = GetTodoList()
-        store.dispatch(action)
+        // const action = GetTodoList()
+        // store.dispatch(action)
     }
 
     render() {

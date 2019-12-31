@@ -3,14 +3,6 @@ import Router from 'next/router'
 import React from 'react'
 
 const Home = () => {
-
-    //routeChangeStart
-    //routeChangeComplete
-    //beforeHistoryChange
-    //routeChangeError
-    //hashChangeStart
-    //hashChangeComplete
-
     Router.events.on('routeChangeStart', (...args) => {
         console.log('1.routeChangeStart => 路由开始变化，参数为：', ...args)
     })

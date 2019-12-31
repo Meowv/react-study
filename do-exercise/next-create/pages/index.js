@@ -1,6 +1,7 @@
 import React from 'react'
 import Head from 'next/head'
 import Nav from '../components/nav'
+import Qix from '../components/qix'
 
 const Home = () => (
   <div>
@@ -10,6 +11,8 @@ const Home = () => (
     </Head>
 
     <Nav />
+
+    <Qix>我是阿星</Qix>
 
     <div className="hero">
       <h1 className="title">Welcome to Next.js!</h1>

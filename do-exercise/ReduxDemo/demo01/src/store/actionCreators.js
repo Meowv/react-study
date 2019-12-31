@@ -22,7 +22,7 @@ export const GetListAction = (data) => ({
 
 export const GetTodoList = () => {
     return (dispatch) => {
-        axios.get('https://www.easy-mock.com/mock/5cfcce489dc7c36bd6da2c99/xiaojiejie/getList').then((res) => {
+        axios.get('https://www.fastmock.site/mock/7a3e574fb43c5b6aba4be91d34925a65/react/todos').then((res) => {
             const data = res.data
             const action = GetListAction(data)
             dispatch(action)

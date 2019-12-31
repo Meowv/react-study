@@ -8,7 +8,7 @@ function* mySage() {
 }
 
 function* getList() {
-    const res = yield axios.get('https://www.easy-mock.com/mock/5cfcce489dc7c36bd6da2c99/xiaojiejie/getList')
+    const res = yield axios.get('https://www.fastmock.site/mock/7a3e574fb43c5b6aba4be91d34925a65/react/todos')
     const action = GetListAction(res.data)
 
     yield put(action)

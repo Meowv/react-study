@@ -2,10 +2,13 @@ import { withRouter } from 'next/router'
 import Link from 'next/link'
 import axios from 'axios'
 
-const Xiaojiejie = ({ router }) => {
+const Xiaojiejie = ({ router, list }) => {
     return (
         <>
             <div>{router.query.name}来为我服务了</div>
+
+            <div>{list}</div>
+
             <Link href="/"><a>返回首页</a></Link>
         </>
     )

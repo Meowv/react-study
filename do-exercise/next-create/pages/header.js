@@ -13,6 +13,7 @@
 // }
 
 import MyHeader from '../components/myheader'
+import { Button } from 'antd'
 import '../static/test.css'
 
 function Header() {
@@ -20,6 +21,7 @@ function Header() {
         <>
             <MyHeader />
             <div>meowv.com</div>
+            <div><Button>我是按钮</Button></div>
         </>
     )
 }

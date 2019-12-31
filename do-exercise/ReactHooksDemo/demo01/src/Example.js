@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 // class Example extends Component {
 //     constructor(props) {
@@ -22,6 +22,11 @@ import React, { useState } from 'react';
 
 function Example() {
     const [count, setCount] = useState(0)
+
+    useEffect(() => {
+        console.log(`useEffect=>你点击了 ${count} 次`)
+    })
+
     return (
         <div>
             <p>你点击了 {count} 次</p>

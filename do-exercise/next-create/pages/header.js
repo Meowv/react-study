@@ -13,6 +13,7 @@
 // }
 
 import MyHeader from '../components/myheader'
+import '../static/test.css'
 
 function Header() {
     return (

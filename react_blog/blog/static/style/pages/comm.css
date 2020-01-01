@@ -5,14 +5,14 @@ body {
   background-color: #fff;
   padding: 0.3rem;
   border-radius: 0.3rem;
-  border-bottom: 1px solid #eee;
+  border: 1px solid #eee;
 }
-.comm-right {
+.comm-box {
   background-color: #fff;
   margin-left: 0.5rem;
   padding: 0.3rem;
   border-radius: 0.3rem;
-  border-bottom: 1px solid #eee;
+  border: 1px solid #eee;
 }
 .comm-main {
   margin-top: 0.5rem;

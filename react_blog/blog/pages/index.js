@@ -3,6 +3,7 @@ import Head from 'next/head'
 import React, { useState } from 'react'
 import Advert from '../components/Advert'
 import Author from '../components/Author'
+import Footer from '../components/Footer'
 import Header from '../components/Header'
 import '../static/style/pages/index.css'
 
@@ -46,6 +47,7 @@ const Home = () => {
 					<Advert />
 				</Col>
 			</Row>
+			<Footer />
 		</>
 	);
 }

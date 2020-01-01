@@ -1,9 +1,10 @@
 import { Col, Icon, List, Row } from 'antd'
 import Head from 'next/head'
 import React, { useState } from 'react'
+import Advert from '../components/Advert'
+import Author from '../components/Author'
 import Header from '../components/Header'
 import '../static/style/pages/index.css'
-import Author from '../components/Author'
 
 const Home = () => {
 	const [list, setList] = useState([
@@ -42,6 +43,7 @@ const Home = () => {
 
 				<Col className="comm-right" xs={0} sm={0} md={7} lg={5} xl={4}>
 					<Author />
+					<Advert />
 				</Col>
 			</Row>
 		</>

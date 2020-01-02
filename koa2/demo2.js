@@ -1,5 +1,8 @@
 const Koa = require('koa');
 const app = new Koa();
+const bodyParser = require('koa-bodyparser');
+
+app.use(bodyParser());
 
 app.use(async (ctx) => {
     // 当请求是GET请求时，显示表单让用户填写
@@ -18,7 +21,8 @@ app.use(async (ctx) => {
         `;
         ctx.body = html;
     } else if (ctx.url === '/' && ctx.method === 'POST') {
-        let postData = await parsePostData(ctx);
+        // let postData = await parsePostData(ctx);
+        let postData = ctx.request.body;
         ctx.body = postData;
     } else {
         //其它请求显示404页面

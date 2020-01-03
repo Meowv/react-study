@@ -89,11 +89,9 @@ const Detailed = (props) => {
 
 Detailed.getInitialProps = async (context) => {
     let id = context.query.id;
-    console.log(id);
     const promise = new Promise((resolve) => {
         axios(api.getArticleById + id).then(
             (res) => {
-                console.log(res)
                 resolve(res.data.data[0])
             }
         )

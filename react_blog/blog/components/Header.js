@@ -1,10 +1,9 @@
 import { Col, Icon, Menu, Row } from 'antd'
-import React, { useState, useEffect } from 'react'
-import '../static/style/components/header.css'
-import Router from 'next/router'
-import Link from 'next/link'
 import axios from 'axios'
+import Router from 'next/router'
+import React, { useEffect, useState } from 'react'
 import api from '../config/apiUrl'
+import '../static/style/components/header.css'
 
 const Header = () => {
 	const [navArray, setNavArray] = useState([])

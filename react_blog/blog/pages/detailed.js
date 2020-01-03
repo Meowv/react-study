@@ -2,20 +2,26 @@ import { Affix, Breadcrumb, Col, Icon, Row } from 'antd'
 import axios from 'axios'
 import hljs from 'highlight.js'
 import 'highlight.js/styles/monokai-sublime.css'
-import MarkNav from 'markdown-navbar'
 import 'markdown-navbar/dist/navbar.css'
 import marked from 'marked'
 import Head from 'next/head'
 import React from 'react'
-import ReactMarkdown from 'react-markdown'
 import Advert from '../components/Advert'
 import Author from '../components/Author'
 import Footer from '../components/Footer'
 import Header from '../components/Header'
+import Tocify from '../components/Tocify.tsx'
 import '../static/style/pages/detailed.css'
 
 const Detailed = (props) => {
+    const tocify = new Tocify();
+
     const renderer = new marked.Renderer();
+
+    renderer.heading = function (text, level, raw) {
+        const anchor = tocify.add(text, level);
+        return `<a id="${anchor}" href="#${anchor}" class="anchor-fix"><h${level}>${text}</h${level}></a>\n`
+    }
 
     marked.setOptions({
         renderer: renderer,
@@ -70,11 +76,7 @@ const Detailed = (props) => {
                     <Affix offsetTop={5}>
                         <div className="detailed-nav comm-box">
                             <div className="nav-title">文章目录</div>
-                            <MarkNav
-                                className="article-menu"
-                                source={html}
-                                ordered={false}
-                            />
+                            {tocify && tocify.render()}
                         </div>
                     </Affix>
                 </Col>

@@ -26,12 +26,15 @@ module.exports = appInfo => {
   config.security = {
     csrf: {
       enabled: false,
+      ignore: () => { return true; },
     },
     domainWhiteList: ['*'],
   };
 
   config.cors = {
-    origin: '*',
+    origin: 'http://localhost:3001',
+    // 允许Cook可以跨域
+    credentials: true,
     allowMethods: 'GET,HEAD,PUT,POST,DELETE,PATCH,OPTIONS',
   };
 

@@ -23,6 +23,18 @@ module.exports = appInfo => {
     // myAppName: 'egg',
   };
 
+  config.security = {
+    csrf: {
+      enabled: false,
+    },
+    domainWhiteList: ['*'],
+  };
+
+  config.cors = {
+    origin: '*',
+    allowMethods: 'GET,HEAD,PUT,POST,DELETE,PATCH,OPTIONS',
+  };
+
   config.mysql = {
     // database configuration
     client: {

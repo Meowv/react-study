@@ -9,6 +9,7 @@ import Author from '../components/Author'
 import Footer from '../components/Footer'
 import Header from '../components/Header'
 import '../static/style/pages/detailed.css'
+import axios from 'axios'
 
 const Detailed = () => {
     let markdown = '# P01:课程介绍和环境搭建\n' +
@@ -95,6 +96,20 @@ const Detailed = () => {
             <Footer />
         </>
     )
+}
+
+Detailed.getInitialProps = async (context) => {
+    let id = context.query.id;
+    console.log(id);
+    const promise = new Promise((resolve) => {
+        axios('http://127.0.0.1:7001/default/getArticleById/' + id).then(
+            (res) => {
+                console.log(res)
+                resolve(res.data.data[0])
+            }
+        )
+    })
+    return await promise
 }
 
 export default Detailed

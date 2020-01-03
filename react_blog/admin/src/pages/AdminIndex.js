@@ -1,6 +1,8 @@
 import { Breadcrumb, Icon, Layout, Menu } from 'antd';
 import React, { useState } from 'react';
 import '../static/css/AdminIndex.css';
+import { Route } from 'react-router-dom'
+import AddArticle from './AddArticle'
 
 const { Header, Content, Footer, Sider } = Layout;
 const { SubMenu } = Menu;
@@ -52,7 +54,11 @@ function AdminIndex() {
                         <Breadcrumb.Item>后台管理</Breadcrumb.Item>
                         <Breadcrumb.Item>工作台</Breadcrumb.Item>
                     </Breadcrumb>
-                    <div style={{ padding: 24, background: '#fff', minHeight: 360 }}>博客工作台.</div>
+                    <div style={{ padding: 24, background: '#fff', minHeight: 360 }}>
+                        <div>
+                            <Route path="/index/" exact component={AddArticle} />
+                        </div>
+                    </div>
                 </Content>
                 <Footer style={{ textAlign: 'center' }}>meowv.com</Footer>
             </Layout>

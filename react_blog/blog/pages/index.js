@@ -1,5 +1,8 @@
 import { Col, Icon, List, Row } from 'antd'
 import axios from 'axios'
+import hljs from 'highlight.js'
+import 'highlight.js/styles/monokai-sublime.css'
+import marked from 'marked'
 import Head from 'next/head'
 import Link from 'next/link'
 import React, { useState } from 'react'
@@ -12,6 +15,21 @@ import '../static/style/pages/index.css'
 
 const Home = (list) => {
 	const [lists, setList] = useState(list.data)
+
+	const renderer = new marked.Renderer();
+	marked.setOptions({
+		renderer: renderer,
+		gfm: true,
+		pedantic: false,
+		sanitize: false,
+		tables: true,
+		breaks: false,
+		smartLists: true,
+		smartypants: false,
+		highlight: function (code) {
+			return hljs.highlightAuto(code).value;
+		}
+	});
 
 	return (
 		<>
@@ -38,7 +56,10 @@ const Home = (list) => {
 									<span><Icon type="folder" /> {item.typeName}</span>
 									<span><Icon type="fire" /> {item.view_count}人</span>
 								</div>
-								<div className="list-context">{item.introduce}</div>
+								<div className="list-context"
+									dangerouslySetInnerHTML={{ __html: marked(item.introduce) }}
+								>
+								</div>
 							</List.Item>
 						)}
 					/>

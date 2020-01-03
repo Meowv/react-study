@@ -1,13 +1,13 @@
 import { Breadcrumb, Col, Icon, List, Row } from 'antd'
+import axios from 'axios'
 import Head from 'next/head'
-import React, { useState, useEffect } from 'react'
+import Link from 'next/link'
+import React, { useEffect, useState } from 'react'
 import Advert from '../components/Advert'
 import Author from '../components/Author'
 import Footer from '../components/Footer'
 import Header from '../components/Header'
-import axios from 'axios'
 import api from '../config/apiUrl'
-import Link from 'next/link'
 
 const Lists = (list) => {
     const [lists, setList] = useState(list.data)

@@ -11,6 +11,7 @@ import Author from '../components/Author'
 import Footer from '../components/Footer'
 import Header from '../components/Header'
 import Tocify from '../components/Tocify.tsx'
+import api from '../config/apiUrl'
 import '../static/style/pages/detailed.css'
 
 const Detailed = (props) => {
@@ -90,7 +91,7 @@ Detailed.getInitialProps = async (context) => {
     let id = context.query.id;
     console.log(id);
     const promise = new Promise((resolve) => {
-        axios('http://127.0.0.1:7001/default/getArticleById/' + id).then(
+        axios(api.getArticleById + id).then(
             (res) => {
                 console.log(res)
                 resolve(res.data.data[0])

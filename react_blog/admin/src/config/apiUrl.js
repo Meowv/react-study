@@ -7,7 +7,7 @@ let serverPath = {
     updateArticle: url + 'updateArticle',
     getArticleList: url + 'getArticleList',
     delArticle: url + 'delArticle/',
-    delArticle: url + 'getArticleById/',
+    getArticleById: url + 'getArticleById/',
 }
 
 export default serverPath;

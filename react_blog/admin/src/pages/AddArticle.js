@@ -125,8 +125,33 @@ function AddArticle(props) {
         }
     }
 
+    const getArticleById = (id) => {
+        axios(api.getArticleById + id, {
+            withCredentials: true,
+            header: { 'Access-Control-Allow-Origin': '*' }
+        }).then(
+            res => {
+                setArticleTitle(res.data.data[0].title)
+                setArticleContent(res.data.data[0].article_content)
+                let html = marked(res.data.data[0].article_content)
+                setMarkdownContent(html)
+                setIntroducemd(res.data.data[0].introduce)
+                let tmpInt = marked(res.data.data[0].introduce)
+                setIntroducehtml(tmpInt)
+                setShowDate(res.data.data[0].addTime)
+                setSelectType(res.data.data[0].typeId)
+            }
+        )
+    }
+
     useEffect(() => {
         getTypeInfo()
+
+        const tempId = props.match.params.id;
+        if (tempId) {
+            setArticleId(tempId)
+            getArticleById(tempId)
+        }
     }, [])
 
     return (

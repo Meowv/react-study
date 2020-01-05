@@ -1,20 +1,14 @@
-import { Button, Card, Icon, Input, Spin, message } from 'antd';
+import { Button, Card, Icon, Input, message, Spin } from 'antd';
 import 'antd/dist/antd.css';
-import React, { useState, useEffect, createContext } from 'react';
+import axios from 'axios';
+import React, { useState } from 'react';
+import api from '../config/apiUrl';
 import '../static/css/Login.css';
-import api from '../config/apiUrl'
-import axios from 'axios'
-
-const openIdContext = createContext()
 
 function Login(props) {
     const [userName, setUserName] = useState('')
     const [password, setPassword] = useState('')
     const [isLoading, setIsLoading] = useState(false)
-
-    useEffect(() => {
-
-    }, [])
 
     const checkLogin = () => {
         setIsLoading(true)
@@ -46,7 +40,7 @@ function Login(props) {
         }).then(
             res => {
                 setIsLoading(false)
-                if (res.data.data == '登录成功') {
+                if (res.data.data === '登录成功') {
                     localStorage.setItem('openId', res.data.openId)
                     props.history.push('/index')
                 } else {

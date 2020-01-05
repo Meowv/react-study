@@ -51,7 +51,7 @@ function AddArticle(props) {
             header: { 'Access-Control-Allow-Origin': '*' },
             withCredentials: true
         }).then(res => {
-            if (res.data.data == "没有登录") {
+            if (res.data.data === "没有登录") {
                 localStorage.removeItem('openId')
                 props.history.push('/')
             } else {
@@ -90,7 +90,7 @@ function AddArticle(props) {
         let datetext = showDate.replace('-', '/') //把字符串转换成时间戳
         dataProps.addTime = (new Date(datetext).getTime()) / 1000
 
-        if (articleId == 0) {
+        if (articleId === 0) {
             console.log('articleId=:' + articleId)
             dataProps.view_count = Math.ceil(Math.random() * 100) + 1000
             axios({
@@ -146,7 +146,6 @@ function AddArticle(props) {
 
     useEffect(() => {
         getTypeInfo()
-
         const tempId = props.match.params.id;
         if (tempId) {
             setArticleId(tempId)

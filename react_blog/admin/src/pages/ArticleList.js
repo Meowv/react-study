@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from 'react';
-import '../static/css/ArticleList.css'
-import { List, Row, Col, Modal, message, Button, Switch } from 'antd';
-import axios from 'axios'
-import api from '../config/apiUrl'
+import { Button, Col, List, message, Modal, Row } from 'antd';
+import axios from 'axios';
+import React, { useEffect, useState } from 'react';
+import api from '../config/apiUrl';
+import '../static/css/ArticleList.css';
 const { confirm } = Modal;
 
 function ArticleList(props) {

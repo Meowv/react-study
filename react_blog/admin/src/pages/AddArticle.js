@@ -1,9 +1,9 @@
-import React, { useState, useEffect } from 'react';
-import marked from 'marked'
-import '../static/css/AddArticle.css'
-import { Row, Col, Input, Select, Button, DatePicker, message } from 'antd'
-import axios from 'axios'
-import api from '../config/apiUrl'
+import { Button, Col, DatePicker, Input, message, Row, Select } from 'antd';
+import axios from 'axios';
+import marked from 'marked';
+import React, { useEffect, useState } from 'react';
+import api from '../config/apiUrl';
+import '../static/css/AddArticle.css';
 
 const { Option } = Select;
 const { TextArea } = Input;
@@ -60,8 +60,28 @@ function AddArticle(props) {
         })
     }
 
-    const selectedTypeHandler = () => {
+    const selectedTypeHandler = (value) => {
+        setSelectType(value)
+    }
 
+    const saveArticle = () => {
+        if (!selectedType) {
+            message.error('必须选择文章类别')
+            return false
+        } else if (!articleTitle) {
+            message.error('文章名称不能为空')
+            return false
+        } else if (!articleContent) {
+            message.error('文章内容不能为空')
+            return false
+        } else if (!introducemd) {
+            message.error('简介不能为空')
+            return false
+        } else if (!showDate) {
+            message.error('发布日期不能为空')
+            return false
+        }
+        message.success('检验通过')
     }
 
     useEffect(() => {
@@ -75,15 +95,20 @@ function AddArticle(props) {
                     <Row gutter={10} >
                         <Col span={20}>
                             <Input
+                                value={articleTitle}
                                 placeholder="博客标题"
-                                size="large" />
+                                size="large"
+                                onChange={e => {
+                                    setArticleTitle(e.target.value)
+                                }}
+                            />
                         </Col>
                         <Col span={4}>
                             &nbsp;
                             <Select defaultValue={selectedType} size="large" onChange={selectedTypeHandler}>
                                 {
                                     typeInfo.map((item, index) => {
-                                        return (<Option key={index} value={item.Id}>{item.typeName}</Option>)
+                                        return (<Option key={index} value={item.id}>{item.typeName}</Option>)
                                     })
                                 }
                             </Select>
@@ -114,7 +139,7 @@ function AddArticle(props) {
                     <Row>
                         <Col span={24}>
                             <Button size="large">暂存文章</Button>&nbsp;
-                            <Button type="primary" size="large">发布文章</Button>
+                            <Button type="primary" size="large" onClick={saveArticle}>发布文章</Button>
                             <br />
                         </Col>
                     </Row>
@@ -137,6 +162,7 @@ function AddArticle(props) {
                             <DatePicker
                                 placeholder="发布日期"
                                 size="large"
+                                onChange={(date, dateString) => { setShowDate(dateString) }}
                             />
                         </div>
                     </Col>

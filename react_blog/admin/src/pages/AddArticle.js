@@ -106,6 +106,22 @@ function AddArticle(props) {
                     message.error('文章保存失败')
                 }
             })
+        } else {
+            console.log('articleId=:' + articleId)
+            dataProps.id = articleId
+            axios({
+                method: 'post',
+                url: api.updateArticle,
+                header: { 'Access-Control-Allow-Origin': '*' },
+                data: dataProps,
+                withCredentials: true
+            }).then(res => {
+                if (res.data.isScuccess) {
+                    message.success('文章保存成功')
+                } else {
+                    message.error('保存失败')
+                }
+            })
         }
     }
 

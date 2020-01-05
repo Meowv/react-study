@@ -56,6 +56,27 @@ class MainController extends Controller {
       isScuccess: updateSuccess,
     };
   }
+
+  // 获取文章列表
+  async getArticleList() {
+    const sql = 'SELECT article.id as id,' +
+      'article.title as title,' +
+      'article.introduce as introduce,' +
+      "FROM_UNIXTIME(article.addTime,'%Y-%m-%d' ) as addTime," +
+      'type.typeName as typeName ' +
+      'FROM article LEFT JOIN type ON article.type_id = type.Id ' +
+      'ORDER BY article.id DESC ';
+
+    const resList = await this.app.mysql.query(sql);
+    this.ctx.body = { list: resList };
+  }
+
+  // 删除文章
+  async delArticle() {
+    const articleId = this.ctx.params.id;
+    const res = await this.app.mysql.delete('article', { 'id': articleId });
+    this.ctx.body = { data: res };
+  }
 }
 
 module.exports = MainController;

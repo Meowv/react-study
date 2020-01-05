@@ -5,6 +5,8 @@ let serverPath = {
     getTypeInfo: url + 'getTypeInfo',
     addArticle: url + 'addArticle',
     updateArticle: url + 'updateArticle',
+    getArticleList: url + 'getArticleList',
+    delArticle: url + 'delArticle/',
 }
 
 export default serverPath;

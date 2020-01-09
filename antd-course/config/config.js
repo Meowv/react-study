@@ -1,7 +1,7 @@
 export default {
     plugins: [
         ['umi-plugin-react', {
-
+            antd: true
         }],
     ],
     routes: [{
@@ -18,3 +18,5 @@ export default {
 // cnpm install umi-plugin-react --save-dev
 
 // cnpm install serve -g
+
+// cnpm install --save antd

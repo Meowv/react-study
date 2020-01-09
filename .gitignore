@@ -21,3 +21,5 @@ run/
 *.un~
 typings/
 .nyc_output/
+dist
+.umi

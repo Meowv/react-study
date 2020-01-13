@@ -1,14 +1,13 @@
 import React from 'react'
-import Head from 'next/head'
-import Header from '../components/Header'
+import Home from '../components/Home/Index'
+import HeadTitle from '../components/Shared/HeadTitle'
+import Layout from '../components/Shared/Layout'
 
-const Home = () => (
-  <div>
-    <Head>
-      <title>Home</title>
-    </Head>
-    <Header />
-  </div>
+const Index = () => (
+  <>
+    <HeadTitle />
+    <Layout content={<Home />} />
+  </>
 )
 
-export default Home
+export default Index

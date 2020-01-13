@@ -12,7 +12,7 @@ const Header = () => {
                         <a className="menu-item" href="/tags">Tags</a>
                         <a className="menu-item apps" href="/apps">Apps</a>
                         <input id="switch_default" type="checkbox" className="switch_default" />
-                        <label for="switch_default" className="toggleBtn"></label>
+                        <label htmlFor="switch_default" className="toggleBtn"></label>
                     </div>
                 </div>
             </nav>

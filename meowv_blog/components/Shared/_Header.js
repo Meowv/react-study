@@ -1,5 +1,9 @@
 import React, { useEffect, useState } from 'react'
 
+/**
+ * 头部导航菜单
+ * TODO:可配置化博客名称
+ */
 const Header = () => {
     const [isSwitched, setIsSwitched] = useState(false)
     const [theme, setTheme] = useState('Light')
@@ -8,7 +12,7 @@ const Header = () => {
     /**
      * 初始化
      */
-    const ThemeInit = () => {
+    const themeInit = () => {
         const storege = localStorage.getItem('theme') || 'light'
         const isDark = storege === 'dark'
         if (isDark) {
@@ -61,7 +65,7 @@ const Header = () => {
     }
 
     useEffect(() => {
-        ThemeInit()
+        themeInit()
     }, [])
 
     return (

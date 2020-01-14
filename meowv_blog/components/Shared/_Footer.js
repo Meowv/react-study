@@ -1,3 +1,7 @@
+/**
+ * 底部版权信息
+ * TODO:可配置化版权信息描述
+ */
 const Footer = () => {
     return (
         <footer id="footer" className="footer">

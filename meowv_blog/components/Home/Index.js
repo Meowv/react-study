@@ -1,10 +1,28 @@
+import React, { useState } from 'react'
+
+/**
+ * 首页内容
+ */
 const Home = () => {
+    const [qrcodeClass, setQrCodeClass] = useState('hidden')
+
+    /**
+     * 二维码显示与隐藏
+     */
+    const qrcodeToggle = () => {
+        if (qrcodeClass === '') {
+            setQrCodeClass('hidden')
+        } else {
+            setQrCodeClass('')
+        }
+    }
+
     return (
         <div className="main">
             <div className="container">
                 <div className="intro">
                     <div className="avatar">
-                        <a href="javascript:;">
+                        <a>
                             <img src="https://static.meowv.com/images/avatar.jpg" />
                         </a>
                     </div>
@@ -12,7 +30,7 @@ const Home = () => {
                     <div className="description">
                         <p>
                             生命不息，奋斗不止
-                        <br />
+                            <br />
                             Cease to struggle and you cease to live
                         </p>
                     </div>
@@ -32,11 +50,10 @@ const Home = () => {
                         <a target="_blank" className="link-item" title="Github" href="https://github.com/Meowv/">
                             <i className="iconfont icongithub"></i>
                         </a>
-                        <a className="link-item weixin" title="点击关注阿星Plus，带你飙车不迷路" href="javascript:;">
-                            <i className="iconfont iconweixin">
-                            </i>
+                        <a className="link-item weixin" title="点击关注阿星Plus，带你飙车不迷路" onClick={qrcodeToggle}>
+                            <i className="iconfont iconweixin"></i>
                         </a>
-                        <div className="qrcode hidden">
+                        <div className={'qrcode ' + qrcodeClass}>
                             <img src="https://static.meowv.com/images/wx_qrcode.jpg" />
                         </div>
                     </div>

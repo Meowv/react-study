@@ -1,5 +1,9 @@
 import Head from 'next/head'
 
+/**
+ * 网站标题
+ * @param {} props 
+ */
 const HeadTitle = (props) => {
     return (
         <Head>
